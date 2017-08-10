@@ -80,6 +80,61 @@ public class EmployeeController {
 	}
 	
 	
+	public static ArrayList<Employee> getEmployeesByDepartment(int departmentId) throws SQLException{
+		ArrayList<Employee> emps = new ArrayList<Employee>();
+		PreparedStatement preparedStatement = null;
+		try{  
+			
+			String query = "SELECT employee_id, fname, lname, age, address_id, nin, bank_acc_info_id FROM employee WHERE department_id = ?";
+		
+			
+			System.out.println("Connecting to a selected database...");
+			dbConnection = getDBConnection();
+			System.out.println("Connected database successfully...");
+			
+			//here sonoo is database name, root is username and password  
+			
+			
+			preparedStatement = dbConnection.prepareStatement(query);
+			
+			preparedStatement.setInt(1, departmentId);
+			
+			
+			ResultSet rs = preparedStatement.executeQuery(query );
+			while (rs.next()) {
+				Employee e = new Employee();
+				e.name = rs.getString("fname") + " " + rs.getString("lname");
+				e.employeeNumber = rs.getInt("employee_id");
+				e.natInsurance = rs.getString("nin");
+				emps.add(e);
+			}
+			
+			System.out.println("No. of employees found: " + emps.size());
+			dbConnection.close();
+			
+		
+		}
+	catch(Exception e)
+	{ 
+		System.out.println(e);
+	}
+		finally {
+			if (preparedStatement != null) {
+				preparedStatement.close();
+			}
+
+			if (dbConnection != null) {
+				
+			}
+		}
+	
+		
+		
+		
+		return emps;
+	}
+	
+	
 	private static Connection getDBConnection() {
 
 		Connection dbConnection = null;
