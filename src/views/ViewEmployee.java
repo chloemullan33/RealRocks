@@ -38,7 +38,7 @@ public class ViewEmployee {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         ArrayList<Employee> emps = new ArrayList<Employee>();
         try {
-			emps = EmployeeController.getEmployeesByDepartment(2);
+			emps = EmployeeController.getEmployeesByDepartment(1);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
