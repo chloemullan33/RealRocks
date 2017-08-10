@@ -20,29 +20,32 @@ import controllers.EmployeeController;
 import javafx.event.ActionEvent;
 
 public class EditEmployee{
-	private JTextField txtAddress1;
-	private JTextField txtAddress2 = null;
-	private JTextField txtTown = null;
-	private JTextField txtPostcode = null;
-	private JTextField txtName = null;
-	private JTextField txtNatInsurance = null;
-	private JTextField txtBankAccountNo = null;
-	private JTextField txtSortCode = null;
-	private JTextField txtStartSalary = null;
+	private JTextField txtAddress1 = new JTextField();
+	private JTextField txtAddress2 = new JTextField();;
+	private JTextField txtTown = new JTextField();;
+	private JTextField txtPostcode = new JTextField();;
+	private JTextField txtName = new JTextField();;
+	private JTextField txtNatInsurance = new JTextField();;
+	private JTextField txtBankAccountNo = new JTextField();;
+	private JTextField txtSortCode = new JTextField();;
+	private JTextField txtStartSalary = new JTextField();;
 	
 	public void createAndShow() {
 		
 		
 		
 		ArrayList<JTextField> textboxes = new ArrayList<JTextField>();
-		textboxes.add(txtAddress2);
+		
 		textboxes.add(txtAddress1);
+		textboxes.add(txtAddress2);
 		textboxes.add(txtTown);
 		textboxes.add(txtName);
 		textboxes.add(txtNatInsurance);
 		textboxes.add(txtBankAccountNo);
 		textboxes.add(txtSortCode);
 		textboxes.add(txtStartSalary);
+		
+		
 		
 		JButton submitButton = new JButton("Submit");
 		
@@ -61,7 +64,7 @@ public class EditEmployee{
         createTextField(pane, txtAddress1);
         
         createLabel(pane,"Address Line 2");
-        createTextField(pane, txtAddress1);
+        createTextField(pane, txtAddress2);
         
         createLabel(pane,"Town");
         createTextField(pane, txtTown);
@@ -116,7 +119,7 @@ public class EditEmployee{
 	}
 	
 	private void createTextField(Container pane, JTextField text) {
-		text = new JTextField();
+
 	pane.add(text);
 	}
 
@@ -124,8 +127,6 @@ public class EditEmployee{
 	public Employee getEmployeeFromInputs() {
 		Employee emp = new Employee();
 		
-		String address = txtAddress1.getText();
-		System.out.println(address);
 		emp.setAddressLine1(txtAddress1.getText().toString());
 		emp.setAddressLine2(txtAddress2.getText().toString());
 		emp.setName(txtName.getText().toString());
