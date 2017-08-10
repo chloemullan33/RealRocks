@@ -1,2 +1,8 @@
+# General
+*.DS_Store
+.AppleDouble
+.LSOverride
+
+# bin directorys
 /bin/
 bin/
