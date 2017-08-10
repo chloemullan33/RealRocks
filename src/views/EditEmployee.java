@@ -1,19 +1,34 @@
 package views;
 
-import java.awt.Frame;
+import java.awt.Container;
+import java.awt.event.ActionListener;
+import java.sql.DriverManager;
+import java.sql.SQLException;
 import java.util.ArrayList;
-import java.awt.*;
 
 import javax.swing.BoxLayout;
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 
+import com.mysql.jdbc.Connection;
+import com.mysql.jdbc.PreparedStatement;
+
 import Models.Employee;
+import controllers.EmployeeController;
+import javafx.event.ActionEvent;
 
 public class EditEmployee{
-	private JTextField txtAddress1 = null, txtAddress2 = null, txtTown = null, txtPostcode = null, txtName = null, txtNatInsurance = null,
-			txtBankAccountNo = null, txtSortCode = null, txtStartSalary = null;
+	private JTextField txtAddress1;
+	private JTextField txtAddress2 = null;
+	private JTextField txtTown = null;
+	private JTextField txtPostcode = null;
+	private JTextField txtName = null;
+	private JTextField txtNatInsurance = null;
+	private JTextField txtBankAccountNo = null;
+	private JTextField txtSortCode = null;
+	private JTextField txtStartSalary = null;
 	
 	public void createAndShow() {
 		
@@ -29,7 +44,7 @@ public class EditEmployee{
 		textboxes.add(txtSortCode);
 		textboxes.add(txtStartSalary);
 		
-		
+		JButton submitButton = new JButton("Submit");
 		
 		Container pane = new Container();
 		pane.setLayout(new BoxLayout(pane,BoxLayout.Y_AXIS));
@@ -64,9 +79,25 @@ public class EditEmployee{
         createTextField(pane, txtSortCode);
         
         createLabel(pane,"Starting Salary");
-        
-        
         createTextField(pane, txtStartSalary);
+        
+        
+        
+        pane.add(submitButton);
+        
+        submitButton.addActionListener(new ActionListener() {
+    		@Override
+			public void actionPerformed(java.awt.event.ActionEvent e) {
+
+    				System.out.println("submit clicked");
+    				try {
+    					Employee emp = getEmployeeFromInputs();
+						EmployeeController.insertData(emp);
+					} catch (SQLException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
+			}});
         
         frame.getContentPane().add(pane);
  
@@ -78,6 +109,8 @@ public class EditEmployee{
         
     }
 	
+	
+	
 	private void createLabel(Container pane, String text){
 		pane.add(new JLabel(text));
 	}
@@ -86,18 +119,25 @@ public class EditEmployee{
 		text = new JTextField();
 	pane.add(text);
 	}
+
 	
 	public Employee getEmployeeFromInputs() {
 		Employee emp = new Employee();
-		emp.setAddressLine1(txtAddress1.getText());
-		emp.setAddressLine1(txtAddress2.getText());
-		emp.setAddressLine1(txtName.getText());
-		emp.setAddressLine1(txtTown.getText());
-		emp.setAddressLine1(txtPostcode.getText());
-		emp.setAddressLine1(txtNatInsurance.getText());
-		emp.setAddressLine1(txtBankAccountNo.getText());
-		emp.setAddressLine1(txtSortCode.getText());
-		emp.setAddressLine1(txtStartSalary.getText());
+		
+		String address = txtAddress1.getText();
+		System.out.println(address);
+		emp.setAddressLine1(txtAddress1.getText().toString());
+		emp.setAddressLine2(txtAddress2.getText().toString());
+		emp.setName(txtName.getText().toString());
+		emp.setTown(txtTown.getText().toString());
+		emp.setPostcode(txtPostcode.getText().toString());
+		emp.setNatInsurance(txtNatInsurance.getText().toString());
+		emp.setBankAccountNo(txtBankAccountNo.getText().toString());
+		emp.setSortCode(txtSortCode.getText().toString());
+		emp.setStartSalary(Double.parseDouble(txtStartSalary.getText()));
 		return emp;
 	}
+	
+	
+	
 }

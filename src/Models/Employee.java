@@ -9,6 +9,8 @@ public class Employee {
 	public String postcode;
 	public String bankAccountNo;
 	public String sortCode;
+	
+	
 	public int getEmployeeNumber() {
 		return employeeNumber;
 	}
@@ -81,16 +83,16 @@ public class Employee {
 		this.natInsurance = natInsurance;
 	}
 
-	public String getStartSalary() {
+	public double getStartSalary() {
 		return startSalary;
 	}
 
-	public void setStartSalary(String startSalary) {
+	public void setStartSalary(double startSalary) {
 		this.startSalary = startSalary;
 	}
 
 	public String natInsurance;
-	public String startSalary;
+	public double startSalary;
 
 	public Employee() {
 	}
