@@ -81,6 +81,10 @@ GRANT ALL PRIVILEGES ON employees.* TO 'root'@'%' IDENTIFIED BY 'unhackable' WIT
 
 DROP USER 'Human Resources'@'localhost';
 CREATE USER 'Human Resources'@'localhost' IDENTIFIED BY 'unhackable';
-GRANT SELECT ON employee.* TO 'Human Resources'@'%' IDENTIFIED BY 'unhackable';
+GRANT SELECT ON employees.* TO 'Human Resources'@'%' IDENTIFIED BY 'unhackable';
+
+CREATE PROCEDURE generateEmpPerDept()
+SELECT CONCAT(employee.fname, ' ' , employee.lname),  department.dept_name FROM employee
+JOIN department ON employee.dept_id = department.dept_id;
 
 FLUSH PRIVILEGES;
