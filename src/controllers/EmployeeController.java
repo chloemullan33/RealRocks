@@ -93,7 +93,7 @@ public class EmployeeController {
 			    stmt.setString(3, "25");
                 stmt.setString(4, emp.getNatInsurance());
                 stmt.setDouble(5, emp.getStartSalary());
-                stmt.setString(6, "1");
+                stmt.setInt(6, emp.getDeptId());
          
                 
 	     

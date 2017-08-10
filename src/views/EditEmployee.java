@@ -30,7 +30,7 @@ public class EditEmployee{
 	private JTextField txtSortCode = null;
 	private JTextField txtStartSalary = null;
 	
-	public void createAndShow() {
+	public void createAndShow(int dept_id) {
 		
 		ArrayList<JTextField> textboxes = new ArrayList<JTextField>();
 		textboxes.add(txtAddress2);
@@ -90,6 +90,7 @@ public class EditEmployee{
     				System.out.println("submit clicked");
     				try {
     					Employee emp = getEmployeeFromInputs();
+    					emp.setDeptId(dept_id);
 						EmployeeController.insertData(emp);
 					} catch (SQLException e1) {
 						// TODO Auto-generated catch block
@@ -107,8 +108,8 @@ public class EditEmployee{
         
     }
 	
-	public void createAndShow(Employee emp) {
-		this.createAndShow();
+	public void createAndShow(Employee emp, int deptId) {
+		this.createAndShow(deptId);
 		this.setEmployeeFields(emp);
 	}
 	

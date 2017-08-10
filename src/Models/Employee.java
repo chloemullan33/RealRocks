@@ -9,6 +9,11 @@ public class Employee {
 	public String postcode;
 	public String bankAccountNo;
 	public String sortCode;
+	public int deptId;
+	
+	public void setDeptId(int id) {
+		this.deptId = id;
+	}
 	
 	
 	public int getEmployeeNumber() {
@@ -95,6 +100,12 @@ public class Employee {
 	public double startSalary;
 
 	public Employee() {
+	}
+
+
+	public int getDeptId() {
+		// TODO Auto-generated method stub
+		return this.deptId;
 	}
 
 }
