@@ -123,7 +123,7 @@ public class EmployeeController {
 		PreparedStatement preparedStatement = null;
 		try{  
 			
-			String query = "SELECT employee_id, fname, lname, age, address_id, nin, bank_acc_info_id FROM employee WHERE department_id = ?";
+			String query = "SELECT employee_id, fname, lname, age, address_id, nin, bank_acc_info_id FROM employee WHERE dept_id = ?";
 		
 			
 			System.out.println("Connecting to a selected database...");
@@ -138,7 +138,7 @@ public class EmployeeController {
 			preparedStatement.setInt(1, departmentId);
 			
 			
-			ResultSet rs = preparedStatement.executeQuery(query );
+			ResultSet rs = preparedStatement.executeQuery();
 			while (rs.next()) {
 				Employee e = new Employee();
 				e.name = rs.getString("fname") + " " + rs.getString("lname");

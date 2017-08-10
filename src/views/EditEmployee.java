@@ -32,8 +32,6 @@ public class EditEmployee{
 	
 	public void createAndShow() {
 		
-		
-		
 		ArrayList<JTextField> textboxes = new ArrayList<JTextField>();
 		
 		textboxes.add(txtAddress1);
@@ -44,16 +42,13 @@ public class EditEmployee{
 		textboxes.add(txtBankAccountNo);
 		textboxes.add(txtSortCode);
 		textboxes.add(txtStartSalary);
-		
-		
-		
 		JButton submitButton = new JButton("Submit");
 		
 		Container pane = new Container();
 		pane.setLayout(new BoxLayout(pane,BoxLayout.Y_AXIS));
 		
         //Create and set up the window.
-        JFrame frame = new JFrame("Employees");
+        JFrame frame = new JFrame("Edit Employee");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         
         
@@ -112,7 +107,10 @@ public class EditEmployee{
         
     }
 	
-	
+	public void createAndShow(Employee emp) {
+		this.createAndShow();
+		this.setEmployeeFields(emp);
+	}
 	
 	private void createLabel(Container pane, String text){
 		pane.add(new JLabel(text));
@@ -139,6 +137,15 @@ public class EditEmployee{
 		return emp;
 	}
 	
+	public void setEmployeeFields(Employee emp) {
+		txtAddress1.setText(emp.addressLine1);
+		txtAddress2.setText(emp.addressLine2);
+		txtBankAccountNo.setText(emp.bankAccountNo);
+		txtPostcode.setText(emp.postcode);
+		txtTown.setText(emp.town);
+		txtName.setText(emp.name);
+		txtStartSalary.setText(Double.toString(emp.getStartSalary()));
+	}
 	
 	
 }
