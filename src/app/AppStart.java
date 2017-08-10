@@ -3,6 +3,7 @@ import java.sql.SQLException;
 
 import controllers.EmployeeController;
 import views.EditEmployee;
+import views.ViewEmployee;
 
 public class AppStart {
 
@@ -14,13 +15,13 @@ public class AppStart {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		EditEmployee editScreen = new EditEmployee();
+		ViewEmployee viewScreen = new ViewEmployee();
         //Schedule a job for the event-dispatching thread:
         //creating and showing this application's GUI.
         javax.swing.SwingUtilities.invokeLater(new Runnable() {
             public void run() {
             		
-                editScreen.createAndShow();
+                viewScreen.createAndShow();
             }
         });
     }
