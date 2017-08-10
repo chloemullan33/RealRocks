@@ -31,7 +31,6 @@ public class ViewEmployee {
 		
 		Container paneAdd = new Container();
 		paneAdd.setLayout(new BoxLayout(paneAdd,BoxLayout.X_AXIS));
-		createLabel(paneAdd,"Name: " + emp.name);
 		
 		pane.add(paneAdd);
 		

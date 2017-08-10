@@ -79,6 +79,43 @@ public class EmployeeController {
 		return emps;
 	}
 	
+	public static void insertData(Employee emp) throws SQLException{
+			PreparedStatement preparedStatement = null;
+			try{  
+				
+				System.out.println("Connecting to a selected database...");
+				dbConnection = getDBConnection();
+				System.out.println("Connected database successfully...");
+				
+				PreparedStatement stmt = (PreparedStatement) dbConnection.prepareStatement("INSERT INTO 'employees'.'employee'(fname, lname, age, nin, start_salary, dept_id) VALUES (?,?,?,?,?,?)");
+				stmt.setString(1, emp.getName());
+			    stmt.setString(2, emp.getName());
+			    stmt.setString(3, "25");
+                stmt.setString(4, emp.getNatInsurance());
+                stmt.setDouble(5, emp.getStartSalary());
+                stmt.setString(6, "1");
+         
+                
+	     
+	          stmt.executeUpdate();
+	          
+	          stmt.close();
+	          dbConnection.close();
+	     } catch(Exception e)
+			{ 
+	 		System.out.println(e);
+	 	}
+	 		finally {
+	 			if (preparedStatement != null) {
+	 				preparedStatement.close();
+	 			}
+
+	 			if (dbConnection != null) {
+	 				
+	 			}
+	 		}
+	 }
+	
 	
 	public static ArrayList<Employee> getEmployeesByDepartment(int departmentId) throws SQLException{
 		ArrayList<Employee> emps = new ArrayList<Employee>();
