@@ -87,13 +87,14 @@ public class EmployeeController {
 				dbConnection = getDBConnection();
 				System.out.println("Connected database successfully...");
 				
-				PreparedStatement stmt = (PreparedStatement) dbConnection.prepareStatement("INSERT INTO 'employees'.'employee'(fname, lname, age, nin, start_salary, dept_id) VALUES (?,?,?,?,?,?)");
-				stmt.setString(1, emp.getName());
-			    stmt.setString(2, emp.getName());
+				PreparedStatement stmt = (PreparedStatement) dbConnection.prepareStatement("INSERT INTO employee (fname, lname, age, nin, start_salary, dept_id) VALUES (?, ?, ?, ? ,?, ?)");
+				//PreparedStatement preparedStmt = dbConnection.prepareStatement(stmt);
+				stmt.setString(1, "Chloe");
+			    stmt.setString(2, "Mullan");
 			    stmt.setString(3, "25");
-                stmt.setString(4, emp.getNatInsurance());
-                stmt.setDouble(5, emp.getStartSalary());
-                stmt.setInt(6, emp.getDeptId());
+                stmt.setString(4, "12345");
+                stmt.setDouble(5, 100.00);
+                stmt.setString(6, "3");
          
                 
 	     
